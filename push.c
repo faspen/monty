@@ -11,7 +11,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	stack_t *item;
 
 	item = malloc(sizeof(stack_t));
-	if (!item)
+	if (!item) /* check if malloc failed */
 	{
 		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
@@ -19,12 +19,12 @@ void _push(stack_t **stack, unsigned int line_number)
 
 	item->n = main_int;
 
-	if (!*stack)
+	if (!*stack) /* element after item is null since stack is empty */
 		item->next = NULL;
 	else
 		item->next = *stack;
 	*stack = item;
 
-	if (item->next)
+	if (item->next) /* account for double link */
 		item->next->prev = item;
 }
