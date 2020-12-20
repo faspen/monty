@@ -19,7 +19,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 		free(*stack);
 		*stack = NULL;
 	}
-	
+
 	node = (*stack)->next; /* node comes after stack */
 	*stack = node; /* stack and node are now the same */
 	node = node->prev; /* move stack behind */
