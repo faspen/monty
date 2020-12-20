@@ -36,7 +36,7 @@ typedef struct instruction_s
 	void (*f)(stack_t **stack, unsigned int line_number);
 } instruction_t;
 
-extern int main_int;
+extern int main_int; /* global variable */
 
 /* function prototypes */
 void _push(stack_t **stack, unsigned int line_number);
@@ -45,5 +45,11 @@ void _pint(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
+int get_len(stack_t **stack);
+void _swap(stack_t **stack, unsigned int line_number);
+
+void myfree(stack_t **stack);
+void inspect(char *argstring, stack_t **stack);
+void get_op(char **str, stack_t **stack, int line);
 
 #endif

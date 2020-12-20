@@ -2,7 +2,8 @@
 
 /**
 * inspect - read file passed
-* @file: file passed
+* @argstring: argument
+* @stack: stack passed
 */
 void inspect(char *argstring, stack_t **stack)
 {

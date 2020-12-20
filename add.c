@@ -3,7 +3,7 @@
 /**
 * _add - add the top two items together
 * @stack: stack used for adding
-* @line_number line number
+* @line_number: line number
 */
 void _add(stack_t **stack, unsigned int line_number)
 {
