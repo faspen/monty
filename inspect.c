@@ -8,12 +8,14 @@
 void inspect(char *argstring, stack_t **stack)
 {
 	FILE *file = fopen(argstring, "r");
-	char *line = NULL, **argues;
+	char *line, **argues;
 	int count;
 	size_t buf = 0;
 
 	if (file)
 	{
+		line = NULL;
+
 		while (getline(&line, &buf, file) != -1)
 		{
 			count++;
@@ -21,6 +23,7 @@ void inspect(char *argstring, stack_t **stack)
 				continue;
 			argues = split(line);
 			get_op(argues, stack, count);
+			free(argues);
 		}
 		free(line);
 		fclose(file);
