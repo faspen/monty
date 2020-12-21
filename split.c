@@ -14,7 +14,7 @@ char **split(char *line)
 
 	if (!toks)
 	{
-		fprintf(stderr, "Error: malloc failer\n");
+		fprintf(stderr, "Error: malloc failed\n");
 		exit(EXIT_FAILURE);
 	}
 

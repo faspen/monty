@@ -51,5 +51,7 @@ void _swap(stack_t **stack, unsigned int line_number);
 void myfree(stack_t **stack);
 void inspect(char *argstring, stack_t **stack);
 void get_op(char **str, stack_t **stack, int line);
+char **split(char *line);
+char _evaluate(char *str);
 
 #endif
