@@ -33,13 +33,14 @@ char **split(char *line)
 {
 	char *tok, **toks;
 	char *str1, *str2;
-	int a = 1;
+	int a = 0;
 	const char *d = " \t\n";
 
 	str1 = copy(line);
 	str2 = copy(line);
 
 	tok = strtok(str1, d);
+	a++;
 	while (tok)
 	{
 		tok = strtok(NULL, d);
@@ -47,7 +48,6 @@ char **split(char *line)
 	}
 
 	toks = malloc(sizeof(char *) * a);
-
 	a = 0;
 	toks[a] = strtok(str2, d);
 

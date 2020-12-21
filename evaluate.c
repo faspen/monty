@@ -5,15 +5,38 @@
 * @str: arg passed
 * Return: 1 if true
 */
-char _evaluate(char *str)
+int _evaluate(char *str)
 {
-	int num = 0;
+	unsigned int i = 0;
 
-	while (str[num])
+	if (!str)
+		return (1);
+	while (str[i] != '\0')
 	{
-		if (str[num] < 48 || str[num] > 57)
+		if (str[i] == '-')
+		{
+			if ((!(str[1] >= '0' && str[1] <= '9')) || str[1] == '\0')
+				return (0);
+			i = 1;
+			while (str[i] >= '0' && str[i] <= '9')
+			{
+				i++;
+				if (str[i] == '\0')
+					return (1);
+			}
 			return (0);
-		num++;
+		}
+		else
+		{
+			i = 0;
+			while (str[i] >= '0' && str[i] <= '9')
+			{
+				i++;
+				if (str[i] == '\0')
+					return (1);
+			}
+			return (0);
+		}
 	}
-	return (1);
+	return (0);
 }

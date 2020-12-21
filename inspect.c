@@ -8,14 +8,12 @@
 void inspect(char *argstring, stack_t **stack)
 {
 	FILE *file = fopen(argstring, "r");
-	char *line, **argues;
-	int count;
+	int count = 0;
+	char *line = NULL, **argues;
 	size_t buf = 0;
 
 	if (file)
 	{
-		line = NULL;
-
 		while (getline(&line, &buf, file) != -1)
 		{
 			count++;
@@ -30,7 +28,10 @@ void inspect(char *argstring, stack_t **stack)
 	}
 	else
 	{
-		fprintf(stderr, "Error, Can't open file %s\n", argstring);
+		fprintf(stderr, "Error: Can't open file %s\n", argstring);
 		exit(EXIT_FAILURE);
 	}
+	fclose(file);
+	free(line);
+	myfree(stack);
 }

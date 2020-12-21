@@ -19,8 +19,10 @@ int main(int argc, char *argv[])
 	{
 		fprintf(stderr, "USAGE: monty file\n");
 		myfree(stack);
+		free(stack);
 		exit(EXIT_FAILURE);
 	}
 	myfree(stack);
+	free(stack);
 	return (0);
 }

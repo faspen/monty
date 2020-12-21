@@ -14,28 +14,32 @@ void get_op(char **str, stack_t **stack, int line)
 		{"nop", _nop}, {"pop", _pop},
 		{"pint", _pint}, {NULL, NULL}
 	};
-	int i = 0;
+	unsigned int i = 0;
+	char ch = 0;
 
-	if (str[0] != NULL)
+	while (ops[i].opcode)
 	{
-		for (i = 0; ops[i].opcode; i++)
-		{
 			if ((strcmp(ops[i].opcode, str[0])) == 0)
 			{
-				if (strcmp(str[0], "push") == 0)
+				ch = (strcmp(ops[i].opcode, "push") == 0);
+				if (ch && (str[1] == NULL || (!(_evaluate(str[1])))))
 				{
-					if (str[1] != NULL && _evaluate(str[1]) == 1)
+					free(str);
+					return;
+				}
+				else if ((strcmp(ops[i].opcode, "push") == 0))
+					main_int = atoi(str[1]);
+				free(str);
+					/*if (str[1] != NULL && _evaluate(str[1]) == 1)
 						main_int = atoi(str[i]);
 					else
 					{
 						fprintf(stderr, "L%d: usage: push integer\n", line);
 						exit(EXIT_FAILURE);
-					}
-				}
+					}*/
 				ops[i].f(stack, (unsigned int)line);
-				break;
 			}
-		}
+			i++;
 	}
 	if (ops[i].f == NULL)
 	{
