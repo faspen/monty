@@ -1,6 +1,30 @@
 #include "monty.h"
 
 /**
+* copy - copy string
+* @str: string
+* Return: new copy
+*/
+char *copy(char *str)
+{
+	int len = 0, values = 0;
+	char *paste = NULL;
+
+	if (!str)
+		return (NULL);
+	while (str[len])
+		len++;
+	paste = malloc(sizeof(char) * (len + 1));
+
+	while (values <= len)
+	{
+		paste[values] = str[values];
+		values++;
+	}
+	return (paste);
+}
+
+/**
 * split - get tokens
 * @line: line used
 * Return: toks
@@ -8,30 +32,30 @@
 char **split(char *line)
 {
 	char *tok, **toks;
-	unsigned int i = 0;
+	char *str1, *str2;
+	int a = 1;
+	const char *d = " \t\n";
 
-	toks = malloc(sizeof(char *) * 3);
+	str1 = copy(line);
+	str2 = copy(line);
 
-	if (!toks)
+	tok = strtok(str1, d);
+	while (tok)
 	{
-		fprintf(stderr, "Error: malloc failed\n");
-		exit(EXIT_FAILURE);
+		tok = strtok(NULL, d);
+		a++;
 	}
 
-	tok = strtok(line, " '\n'");
+	toks = malloc(sizeof(char *) * a);
 
-	if (!tok)
-	{
-		free(toks);
-		return (NULL);
-	}
+	a = 0;
+	toks[a] = strtok(str2, d);
 
-	while (tok && i < 2)
+	while (toks[a] && a <= 2)
 	{
-		toks[i] = tok;
-		tok = strtok(NULL, " '\n'");
-		i++;
+		toks[a] = strtok(NULL, d);
+		a++;
 	}
-	toks[i] = NULL;
+	free(str1);
 	return (toks);
 }

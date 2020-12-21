@@ -53,5 +53,6 @@ void inspect(char *argstring, stack_t **stack);
 void get_op(char **str, stack_t **stack, int line);
 char **split(char *line);
 char _evaluate(char *str);
+char *copy(char *str);
 
 #endif

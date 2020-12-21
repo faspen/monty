@@ -16,13 +16,13 @@ void get_op(char **str, stack_t **stack, int line)
 	};
 	int i = 0;
 
-	if (str[0])
+	if (str[0] != NULL)
 	{
 		for (i = 0; ops[i].opcode; i++)
 		{
-			if (!(strcmp(ops[i].opcode, str[0])))
+			if ((strcmp(ops[i].opcode, str[0])) == 0)
 			{
-				if (!strcmp(str[0], "push"))
+				if (strcmp(str[0], "push") == 0)
 				{
 					if (str[1] != NULL && _evaluate(str[1]) == 1)
 						main_int = atoi(str[i]);
@@ -37,7 +37,7 @@ void get_op(char **str, stack_t **stack, int line)
 			}
 		}
 	}
-	if (!ops[i].f)
+	if (ops[i].f == NULL)
 	{
 		fprintf(stderr, "L%d: unkown instruction %s\n", line, str[0]);
 		exit(EXIT_FAILURE);
