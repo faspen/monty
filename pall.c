@@ -6,11 +6,13 @@
 */
 void _pall(stack_t **stack, unsigned int line_number)
 {
+	stack_t *printing;
 	(void)line_number;
-	stack_t *printing = *stack;
+
+	printing = *stack;
 
 	if (!*stack)
-		exit(EXIT_FAILURE)
+		exit(EXIT_FAILURE);
 	while (printing)
 	{
 		fprintf(stdout, "%d\n", printing->n);

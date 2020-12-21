@@ -8,13 +8,13 @@
 */
 void get_op(char **str, stack_t **stack, int line)
 {
-	monty_t ops[] = {
+	instruction_t ops[] = {
 		{"push", _push}, {"pall", _pall},
 		{"swap", _swap}, {"add", _add},
 		{"nop", _nop}, {"pop", _pop},
 		{"pint", _pint}, {NULL, NULL}
 	};
-	int i;
+	int i = 0;
 
 	if (str[0])
 	{
