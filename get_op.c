@@ -14,7 +14,7 @@ void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int)
 		{"nop", _nop}, {"pop", _pop},
 		{"pint", _pint}, {NULL, NULL}
 	};
-	
+
 	unsigned int i = 0;
 	char hold = 0;
 
@@ -30,14 +30,14 @@ void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int)
 			}
 			else if (!(strcmp(ops[i].opcode, "push")))
 				main_int = atoi(str[1]);
-			
+
 			free(str);
 			return (ops[i].f);
 		}
 		i++;
 	}
 	fprintf(stderr, "L%d: unkown instruction %s\n", line, str[0]);
-	
+
 	free(str);
 	exit(EXIT_FAILURE);
 }

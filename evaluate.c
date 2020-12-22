@@ -26,7 +26,7 @@ int _evaluate(char *str)
 				if (!str[i])
 					return (1);
 			}
-			
+
 			return (0);
 		}
 		else
