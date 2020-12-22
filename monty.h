@@ -48,6 +48,7 @@ void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
 void _swap(stack_t **stack, unsigned int line_number);
 
+/* main functions */
 void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int);
 void myfree(stack_t **stack);
 void inspect(char *argstring);
