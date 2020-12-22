@@ -13,7 +13,7 @@ void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int)
 		{"swap", _swap}, {"add", _add},
 		{"nop", _nop}, {"pop", _pop},
 		{"pint", _pint}, {"sub", _sub},
-		{NULL, NULL}
+		{"mul", _mul}, {NULL, NULL}
 	};
 
 	unsigned int i = 0;
