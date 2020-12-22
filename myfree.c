@@ -17,7 +17,7 @@ void myfree(stack_t **stack)
 		if (!node)
 			return;
 		node->prev = NULL;
-		*stack = node;
+		(*stack) = node;
 	}
 	free(stack);
 }

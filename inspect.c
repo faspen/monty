@@ -8,7 +8,7 @@ void inspect(char *argstring)
 {
 	stack_t *stack = NULL;
 	FILE *file;
-	unsigned int count = 0;
+	int count = 0;
 	char *line = NULL, **argues;
 	size_t buf = 0;
 	void (*f)(stack_t **stack, unsigned int line_number);
