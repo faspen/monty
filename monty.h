@@ -7,7 +7,7 @@
 #include <string.h>
 
 extern int main_int; /* global variable */
-
+int main_int;
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
 * @n: integer

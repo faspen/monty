@@ -1,5 +1,5 @@
 #include "monty.h"
-int main_int;
+
 /**
 * _push - add item to stack
 * @stack: pointerpointer to double link list
@@ -23,8 +23,7 @@ void _push(stack_t **stack, unsigned int line_number)
 	item->next = *stack;
 	item->prev = NULL;
 
-	if (*stack != NULL)
+	if (*stack)
 		(*stack)->prev = item;
-
 	*stack = item;
 }

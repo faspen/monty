@@ -7,7 +7,7 @@
 */
 void _swap(stack_t **stack, unsigned int line_number)
 {
-	stack_t *node = *stack;
+	stack_t *node;
 
 	if (!*stack || !(*stack)->next)
 	{

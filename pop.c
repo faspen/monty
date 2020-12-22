@@ -9,7 +9,7 @@ void _pop(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node;
 
-	if (!*stack)
+	if (*stack == NULL)
 	{
 		fprintf(stderr, "L%d: can't pop an empty stack\n", line_number);
 		exit(EXIT_FAILURE);
@@ -21,10 +21,10 @@ void _pop(stack_t **stack, unsigned int line_number)
 	}
 	else
 	{
-		node = (*stack)->next; /* node comes after stack */
-		*stack = node; /* stack and node are now the same */
-		node = node->prev; /* move stack behind */
-		(*stack)->prev = NULL; /* stack->prev kills node */
-		free(node); /* if you love something set it free */
+		node = (*stack)->next;
+		*stack = node;
+		node = node->prev;
+		(*stack)->prev = NULL;
+		free(node);
 	}
 }

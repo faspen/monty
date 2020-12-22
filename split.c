@@ -29,7 +29,7 @@ char **split(char *line)
 	while (tok && a < 2)
 	{
 		toks[a] = tok;
-		tok = strtok(NULL, " \n'");
+		tok = strtok(NULL, " '\n'");
 		a++;
 	}
 	toks[a] = NULL;
