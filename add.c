@@ -16,7 +16,12 @@ void _add(stack_t **stack, unsigned int line_number)
 		math = math->next;
 	}
 
-	if (num < 2)
+	if (!*stack || !(*stack)->next)
+	{
+		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
+		exit(EXIT_FAILURE);
+	}
+	if (!math->next)
 	{
 		fprintf(stderr, "L%d: can't add, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

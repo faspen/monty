@@ -3,10 +3,10 @@
 /**
 * get_op - check for operation
 * @str: given argument
-* @stack: stack given
 * @line: line
+* Return: appropriate function
 */
-void get_op(char **str, stack_t **stack, int line)
+void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int)
 {
 	instruction_t ops[] = {
 		{"push", _push}, {"pall", _pall},
@@ -19,31 +19,23 @@ void get_op(char **str, stack_t **stack, int line)
 
 	while (ops[i].opcode)
 	{
-			if ((strcmp(ops[i].opcode, str[0])) == 0)
+		if ((strcmp(ops[i].opcode, str[0])) == 0)
+		{
+			ch = (strcmp(ops[i].opcode, "push") == 0);
+			if (ch && (str[1] == NULL || (!(_evaluate(str[1])))))
 			{
-				ch = (strcmp(ops[i].opcode, "push") == 0);
-				if (ch && (str[1] == NULL || (!(_evaluate(str[1])))))
-				{
-					free(str);
-					return;
-				}
-				else if ((strcmp(ops[i].opcode, "push") == 0))
-					main_int = atoi(str[1]);
 				free(str);
-					/*if (str[1] != NULL && _evaluate(str[1]) == 1)
-						main_int = atoi(str[i]);
-					else
-					{
-						fprintf(stderr, "L%d: usage: push integer\n", line);
-						exit(EXIT_FAILURE);
-					}*/
-				ops[i].f(stack, (unsigned int)line);
+				return (NULL);
 			}
-			i++;
+			else if ((strcmp(ops[i].opcode, "push") == 0))
+				main_int = atoi(str[1]);
+			free(str);
+			return (ops[i].f);
+		}
+		i++;
 	}
-	if (ops[i].f == NULL)
-	{
-		fprintf(stderr, "L%d: unkown instruction %s\n", line, str[0]);
-		exit(EXIT_FAILURE);
-	}
+	fprintf(stderr, "L%d: unkown instruction %s\n", line, str[0]);
+
+	free(str);
+	exit(EXIT_FAILURE);
 }

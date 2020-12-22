@@ -48,9 +48,9 @@ void _add(stack_t **stack, unsigned int line_number);
 int get_len(stack_t **stack);
 void _swap(stack_t **stack, unsigned int line_number);
 
+void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int);
 void myfree(stack_t **stack);
-void inspect(char *argstring, stack_t **stack);
-void get_op(char **str, stack_t **stack, int line);
+void inspect(char *argstring);
 char **split(char *line);
 int _evaluate(char *str);
 char *copy(char *str);

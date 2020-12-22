@@ -1,23 +1,6 @@
 #include "monty.h"
 
 /**
-* get_len - get stack length
-* @stack: stack to look at
-* Return: length
-*/
-int get_len(stack_t **stack)
-{
-	int len = 0;
-
-	while (*stack)
-	{
-		len++;
-		*stack = (*stack)->next;
-	}
-	return (len);
-}
-
-/**
 * _swap - swap top two items
 * @stack: stack used
 * @line_number: number of lines
@@ -25,11 +8,8 @@ int get_len(stack_t **stack)
 void _swap(stack_t **stack, unsigned int line_number)
 {
 	stack_t *node = *stack;
-	int len;
 
-	len = get_len(stack);
-
-	if (len < 2)
+	if (!*stack || !(*stack)->next)
 	{
 		fprintf(stderr, "L%d: can't swap, stack too short\n", line_number);
 		exit(EXIT_FAILURE);

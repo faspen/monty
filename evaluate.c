@@ -11,17 +11,17 @@ int _evaluate(char *str)
 
 	if (!str)
 		return (1);
-	while (str[i] != '\0')
+	while (str[i])
 	{
 		if (str[i] == '-')
 		{
-			if ((!(str[1] >= '0' && str[1] <= '9')) || str[1] == '\0')
+			if ((!(str[1] >= '0' && str[1] <= '9')) || !str[1])
 				return (0);
 			i = 1;
 			while (str[i] >= '0' && str[i] <= '9')
 			{
 				i++;
-				if (str[i] == '\0')
+				if (!str[i])
 					return (1);
 			}
 			return (0);
@@ -32,7 +32,7 @@ int _evaluate(char *str)
 			while (str[i] >= '0' && str[i] <= '9')
 			{
 				i++;
-				if (str[i] == '\0')
+				if (!str[i])
 					return (1);
 			}
 			return (0);
