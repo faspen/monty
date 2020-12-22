@@ -23,7 +23,7 @@ void _add(stack_t **stack, unsigned int line_number)
 		exit(EXIT_FAILURE);
 	}
 	math->next->n += (*stack)->n;
-	*stack = (*stack)->next;
+	*stack = (*stack)->next; /* top node moves down */
 	free(math);
 	(*stack)->prev = NULL;
 }

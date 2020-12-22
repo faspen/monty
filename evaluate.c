@@ -9,13 +9,13 @@ int _evaluate(char *str)
 {
 	unsigned int i = 0;
 
-	if (!str)
+	if (!str) /* still return 1 if it is zero */
 		return (1);
 
 	while (str[i])
 	{
 		if (str[i] == '-')
-		{
+		{/* if not a number or NULL */
 			if ((!(str[1] >= '0' && str[1] <= '9')) || !str[1])
 				return (0);
 			i++;
@@ -41,5 +41,5 @@ int _evaluate(char *str)
 			return (0);
 		}
 	}
-	return (0);
+	return (0); /* 0 if nothing passed */
 }
