@@ -15,7 +15,7 @@ void inspect(char *argstring)
 
 	file = fopen(argstring, "r");
 
-	if (file == NULL)
+	if (!file)
 	{
 		fprintf(stderr, "Error: Can't open file %s\n", argstring);
 		exit(EXIT_FAILURE);
@@ -23,23 +23,24 @@ void inspect(char *argstring)
 	while (getline(&line, &buf, file) != -1)
 	{
 		count++;
-		argues = split(line);
+		argues = split(line); /* tokenize */
 		if (!argues)
 			continue;
 		else
 			f = get_op(argues, count);
-		if (f)
+
+		if (f != NULL)
 			f(&stack, count);
 		else
 		{
 			fprintf(stderr, "L%d: usage: push integer\n", count);
 			fclose(file);
-			free(line);
 			myfree(&stack);
+			free(line);
 			exit(EXIT_FAILURE);
 		}
 	}
 	fclose(file);
-	free(line);
 	myfree(&stack);
+	free(line);
 }

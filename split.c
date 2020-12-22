@@ -18,7 +18,7 @@ char **split(char *line)
 		exit(EXIT_FAILURE);
 	}
 
-	tok = strtok(line, " '\n'");
+	tok = strtok(line, " '\t\r\n\a'");
 
 	if (!tok)
 	{
@@ -29,7 +29,7 @@ char **split(char *line)
 	while (tok && a < 2)
 	{
 		toks[a] = tok;
-		tok = strtok(NULL, " '\n'");
+		tok = strtok(NULL, " '\t\r\n\a'");
 		a++;
 	}
 	toks[a] = NULL;

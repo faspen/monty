@@ -8,6 +8,7 @@
 
 extern int main_int; /* global variable */
 int main_int;
+
 /**
 * struct stack_s - doubly linked list representation of a stack (or queue)
 * @n: integer
@@ -45,7 +46,6 @@ void _pint(stack_t **stack, unsigned int line_number);
 void _nop(stack_t **stack, unsigned int line_number);
 void _pop(stack_t **stack, unsigned int line_number);
 void _add(stack_t **stack, unsigned int line_number);
-int get_len(stack_t **stack);
 void _swap(stack_t **stack, unsigned int line_number);
 
 void (*get_op(char **str, unsigned int line))(stack_t **, unsigned int);
@@ -53,6 +53,5 @@ void myfree(stack_t **stack);
 void inspect(char *argstring);
 char **split(char *line);
 int _evaluate(char *str);
-char *copy(char *str);
 
 #endif
