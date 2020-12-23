@@ -2,7 +2,7 @@
 /**
 * _pall - print everything in the stack top to bottom
 * @stack: stack to print
-* @line_number: irrelevant
+* @line_number: number of lines
 */
 void _pall(stack_t **stack, unsigned int line_number)
 {
